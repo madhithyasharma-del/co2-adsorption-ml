@@ -1,0 +1,15 @@
+{
+  "rows": 527,
+  "columns": 11,
+  "missing_cells": 238,
+  "missing_by_column": {
+    "Total Pore Volume(cm3/g)": 28,
+    "Micropore Volume (cm3/g)": 210
+  },
+  "exact_duplicates": 1,
+  "negative_values": 0,
+  "mpv_greater_than_tpv": 2,
+  "element_sum_over_100": 71,
+  "element_sum_over_101": 5,
+  "max_element_sum": 104.0
+}
