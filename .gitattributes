@@ -1,0 +1,4 @@
+# Normalise line endings so Windows/Linux edits don't show as "every line changed"
+* text=auto
+*.csv text eol=lf
+*.ipynb text eol=lf
