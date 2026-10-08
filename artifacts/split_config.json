@@ -1,0 +1,9 @@
+{
+  "random_state": 42,
+  "duplicates_removed": 1,
+  "counts": {
+    "train": 336,
+    "test": 106,
+    "validation": 84
+  }
+}
