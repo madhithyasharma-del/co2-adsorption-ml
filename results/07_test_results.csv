@@ -1,0 +1,4 @@
+,rmse,mae,r2
+Ensemble (entropy-TOPSIS),0.644,0.477,0.848
+CatBoost alone,0.605,0.446,0.866
+Ridge baseline,0.974,0.745,0.652
