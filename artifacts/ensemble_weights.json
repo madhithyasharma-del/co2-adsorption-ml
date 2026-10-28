@@ -1,0 +1,8 @@
+{
+  "Random Forest": 0.0189,
+  "Extra Trees": 0.1144,
+  "Gradient Boosting": 0.1539,
+  "XGBoost": 0.0277,
+  "LightGBM": 0.1936,
+  "CatBoost": 0.4915
+}
