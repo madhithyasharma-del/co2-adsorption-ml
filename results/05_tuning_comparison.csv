@@ -1,0 +1,7 @@
+model,cv_rmse,tuned_cv_rmse,improvement
+CatBoost,0.703,0.689,0.014
+LightGBM,0.779,0.723,0.056
+XGBoost,0.758,0.727,0.031
+Gradient Boosting,0.787,0.729,0.058
+Random Forest,0.779,0.737,0.042
+Extra Trees,0.765,0.738,0.027
