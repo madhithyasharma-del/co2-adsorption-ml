@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>History · CO₂ Uptake Predictor</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-nav" id="site-nav"></header>
+
+  <main class="wrap">
+    <div class="page-head">
+      <h1>Prediction history</h1>
+      <p>Previous single predictions, newest first, with the model version that made each one.</p>
+    </div>
+
+    <section class="card">
+      <div class="actions" style="justify-content:space-between;align-items:center">
+        <span class="muted" id="history-sub" style="margin:0">Loading…</span>
+        <button type="button" class="btn ghost small" id="refresh-btn">Refresh</button>
+      </div>
+      <ul class="alerts" id="history-alerts"></ul>
+      <div class="table-wrap scroll-y" id="history-table" hidden></div>
+      <p class="muted" id="history-empty" hidden>No predictions yet. Make one on the <a href="predict.html">Predict</a> page.</p>
+    </section>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/mock.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/history.js"></script>
+</body>
+</html>

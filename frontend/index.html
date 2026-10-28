@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CO₂ Uptake Predictor</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-nav" id="site-nav"></header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Interpretable machine learning · Biomass-derived porous carbons</p>
+      <h1>How much CO₂ will this carbon capture?</h1>
+      <p>Predict the CO₂ uptake of a porous carbon from its structure, composition and test conditions, and see which inputs drove the prediction.</p>
+    </section>
+
+    <div class="choices">
+      <a class="choice" href="predict.html">
+        <span class="choice-tag">For everyone</span>
+        <h2>Use the predictor</h2>
+        <ul>
+          <li>Predict one material and see a SHAP explanation</li>
+          <li>Upload a CSV to predict many at once</li>
+          <li>Read how the model works and how accurate it is</li>
+        </ul>
+        <span class="btn primary">Start predicting →</span>
+      </a>
+
+      <a class="choice choice-admin" href="admin.html">
+        <span class="choice-tag">Admins only</span>
+        <h2>Manage the model</h2>
+        <ul>
+          <li>Upload new training data</li>
+          <li>Train and compare candidate models</li>
+          <li>Activate or roll back model versions</li>
+        </ul>
+        <span class="btn dark">Admin login →</span>
+      </a>
+    </div>
+
+    <p class="muted center" id="model-line"></p>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/mock.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    // Start page: just the navigation and a line naming the model in use.
+    renderNav("home");
+    API.getActiveModel()
+      .then((m) => { $("model-line").textContent = `Model in use: ${m.version} · ${m.model_type}`; })
+      .catch(() => { /* leave the line empty if the backend is down */ });
+  </script>
+</body>
+</html>

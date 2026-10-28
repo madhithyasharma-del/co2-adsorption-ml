@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin · CO₂ Uptake Predictor</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin">
+  <header class="site-nav" id="site-nav"></header>
+
+  <main class="wrap">
+    <!-- Login: shown until the backend accepts the key -->
+    <section class="card login" id="login-card">
+      <h2>Admin login</h2>
+      <p class="sub" id="login-sub">Enter the admin key to manage models. The backend checks the key; you'll need to log in again after leaving this page.</p>
+      <form id="login-form" novalidate>
+        <label for="admin-key">Admin key</label>
+        <input type="password" id="admin-key" autocomplete="current-password" placeholder="Admin key">
+        <ul class="alerts" id="login-alerts"></ul>
+        <div class="actions" style="margin-top:14px">
+          <button type="submit" class="btn primary" id="login-btn">Log in</button>
+          <a class="btn ghost" href="index.html">Back to start</a>
+        </div>
+      </form>
+    </section>
+
+    <!-- Admin tools: hidden until logged in -->
+    <div id="admin-tools" hidden>
+    <div class="page-head page-head-row">
+      <div>
+        <h1>Model management</h1>
+        <p>Upload a training dataset, train a new candidate model, compare it with the active one, and choose which version the site uses.</p>
+      </div>
+      <button type="button" class="btn ghost" id="logout-btn">Log out</button>
+    </div>
+
+    <!-- 1. Dataset -->
+    <section class="card">
+      <h2>1. Upload a dataset</h2>
+      <p class="sub">CSV with the 10 input columns and <code id="target-name"></code>, using the exact column names from the original data.</p>
+      <div class="drop" id="drop">
+        <div>Drag a .csv file here, or choose one:</div>
+        <input type="file" id="file" accept=".csv,text/csv">
+        <div class="file-name" id="file-name"></div>
+      </div>
+      <ul class="alerts" id="file-alerts"></ul>
+
+      <div id="local-preview" hidden>
+        <p class="muted" id="preview-sub" style="margin-top:16px"></p>
+        <div class="table-wrap scroll-y" id="preview-table" style="margin-top:8px"></div>
+        <div class="actions" style="margin-top:14px">
+          <button type="button" class="btn primary" id="upload-btn">Upload and validate</button>
+        </div>
+      </div>
+
+      <div id="validation" hidden>
+        <h3 style="margin:20px 0 8px;font-size:1rem">Server validation <span class="badge mock" id="val-mock" hidden>Demo data</span></h3>
+        <div class="stats" id="val-stats"></div>
+        <ul class="alerts" id="val-alerts"></ul>
+        <div class="table-wrap" id="missing-table" style="margin-top:12px" hidden></div>
+      </div>
+    </section>
+
+    <!-- 2. Training -->
+    <section class="card">
+      <h2>2. Train a candidate model</h2>
+      <p class="sub">Runs the full pipeline on the validated dataset. The new model is saved as a <em>candidate</em>; it does not replace the active model until you activate it.</p>
+      <div class="actions">
+        <button type="button" class="btn primary" id="train-btn" disabled>Start training</button>
+      </div>
+      <p class="muted" id="train-hint">Upload and validate a dataset first.</p>
+
+      <div id="train-status" hidden>
+        <p style="margin:14px 0 0"><strong id="train-state"></strong> <span class="muted" id="train-job"></span></p>
+        <div class="progress"><span id="train-bar"></span></div>
+        <pre class="logs" id="train-logs"></pre>
+        <ul class="alerts" id="train-alerts"></ul>
+        <div id="compare" hidden>
+          <h3 style="margin:18px 0 8px;font-size:1rem">Candidate vs active model <span class="badge mock" id="cmp-mock" hidden>Demo data</span></h3>
+          <div class="table-wrap" id="compare-table"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Versions -->
+    <section class="card">
+      <div class="actions" style="justify-content:space-between;align-items:center;margin-top:0">
+        <h2 style="margin:0">3. Model versions</h2>
+        <button type="button" class="btn ghost small" id="refresh-btn">Refresh</button>
+      </div>
+      <p class="sub" style="margin-top:6px">Activating or rolling back changes the model every user gets. Both ask for confirmation.</p>
+      <ul class="alerts" id="versions-alerts"></ul>
+      <div class="table-wrap" id="versions-table"></div>
+    </section>
+    </div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/mock.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
